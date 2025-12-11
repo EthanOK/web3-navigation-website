@@ -27,6 +27,24 @@ const web3Communities: Category = {
       description: "Web3 Open University for Developers",
       icon: "./assets/images/wtf-logo.svg",
       link: "https://www.wtf.academy/zh"
+    },
+    {
+      name: "OpenBuild",
+      description: "Help ✦ Developers ✦ get on the Success Way to Web3",
+      icon: "https://openbuild.xyz/favicon.ico",
+      link: "https://openbuild.xyz"
+    },
+    {
+      name: "Dapp-Learning",
+      description: "An open-sourced developer community focusing on Ethereum",
+      icon: "https://dapplearning.org/_next/image?url=%2Fimages%2Ficon%2F192x192.png&w=96&q=75",
+      link: "https://dapplearning.org"
+    },
+    {
+      name: "ETHPanda",
+      description: "ETHPanda | 连接华语以太坊建设者",
+      icon: "https://ethpanda.org/icons/panda-logo.svg",
+      link: "https://ethpanda.org"
     }
   ]
 };
