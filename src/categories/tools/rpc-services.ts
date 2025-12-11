@@ -17,6 +17,12 @@ const rpcServices: Category = {
       link: "https://www.alchemy.com"
     },
     {
+      name: "QuickNode",
+      description: "QuickNode - the web3 development platform",
+      icon: "https://quicknode.com/favicon.ico",
+      link: "https://quicknode.com"
+    },
+    {
       name: "Infura",
       description: "Web3 Development Platform | Blockchain Node Service",
       icon: "https://www.infura.io/favicon/favicon-32x32.png",
@@ -33,6 +39,12 @@ const rpcServices: Category = {
       description: "1RPC | Web3 Private RPC Relay",
       icon: "https://www.1rpc.io/favicon.webp",
       link: "https://www.1rpc.io"
+    },
+    {
+      name: "0xRPC",
+      description: "0xRPC | Web3 Private RPC Relay",
+      icon: "https://raw.githubusercontent.com/upptime/upptime/master/assets/upptime-icon.svg",
+      link: "https://0xrpc.github.io/"
     }
   ]
 };
