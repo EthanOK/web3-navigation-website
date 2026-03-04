@@ -610,11 +610,11 @@ body[data-theme="light"] .tool-description {
 }
 
 .crypto-tickers-track--a {
-  --marquee-duration: 18s;
+  --marquee-duration: 36s;
 }
 
 .crypto-tickers-track--b {
-  --marquee-duration: 22s;
+  --marquee-duration: 44s;
   animation-delay: -12s;
   opacity: 0.95;
 }
@@ -998,11 +998,11 @@ a:focus-visible {
   }
 
   .crypto-tickers-track--a {
-    --marquee-duration: 14s;
+    --marquee-duration: 28s;
   }
 
   .crypto-tickers-track--b {
-    --marquee-duration: 17s;
+    --marquee-duration: 34s;
   }
 
   .crypto-ticker {

@@ -20,6 +20,9 @@ function App() {
   const mainContentRef = useRef(null);
   const tickerRowA = tickers.filter((_, idx) => idx % 2 === 0);
   const tickerRowB = tickers.filter((_, idx) => idx % 2 === 1);
+  const marqueeRepeat = 6;
+  const tickerRowARepeated = Array.from({ length: marqueeRepeat }, () => tickerRowA).flat();
+  const tickerRowBRepeated = Array.from({ length: marqueeRepeat }, () => tickerRowB).flat();
 
   useEffect(() => {
     const fetchPrices = async () => {
@@ -181,7 +184,7 @@ function App() {
             <div className="crypto-tickers-marquee">
               <div className="crypto-tickers-row">
                 <div className="crypto-tickers-track crypto-tickers-track--a">
-                  {[...tickerRowA, ...tickerRowA].map((t, i) => (
+                  {tickerRowARepeated.map((t, i) => (
                     <div key={`${t.symbol}-a-${i}`} className="crypto-ticker">
                       <span className="crypto-ticker-symbol">{t.symbol}</span>
                       <span className="crypto-ticker-price">
@@ -201,7 +204,7 @@ function App() {
 
               <div className="crypto-tickers-row">
                 <div className="crypto-tickers-track crypto-tickers-track--b">
-                  {[...tickerRowB, ...tickerRowB].map((t, i) => (
+                  {tickerRowBRepeated.map((t, i) => (
                     <div key={`${t.symbol}-b-${i}`} className="crypto-ticker">
                       <span className="crypto-ticker-symbol">{t.symbol}</span>
                       <span className="crypto-ticker-price">
