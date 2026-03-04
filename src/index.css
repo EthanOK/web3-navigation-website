@@ -197,6 +197,26 @@ body[data-theme="light"] .main-content {
   box-shadow: 0 22px 70px rgba(148, 163, 184, 0.45);
 }
 
+body[data-theme="light"] .app-root::-webkit-scrollbar-track,
+body[data-theme="light"] .main-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+body[data-theme="light"] .app-root::-webkit-scrollbar-thumb,
+body[data-theme="light"] .main-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+body[data-theme="light"] .app-root::-webkit-scrollbar-thumb:hover,
+body[data-theme="light"] .main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+body[data-theme="light"] .app-root,
+body[data-theme="light"] .main-content {
+  scrollbar-color: rgba(0, 0, 0, 0.25) rgba(0, 0, 0, 0.06);
+}
+
 body[data-theme="light"] .category-count {
   color: #6b7280;
 }
@@ -242,6 +262,36 @@ body[data-theme="light"] .tool-description {
   position: relative;
   height: 100vh;
   overflow: auto;
+  direction: ltr;
+}
+
+/* 滚动条样式：与深色主题一致 */
+.app-root::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-root::-webkit-scrollbar-track,
+.main-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.app-root::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.app-root::-webkit-scrollbar-thumb:hover,
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.app-root,
+.main-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.04);
 }
 
 .app-backdrop {
@@ -286,6 +336,7 @@ body[data-theme="light"] .tool-description {
   width: 100%;
   padding: 24px 24px 28px;
   gap: 22px;
+  animation: fadeIn 0.5s ease-out;
 }
 
 @keyframes backdropFloat {
@@ -294,6 +345,37 @@ body[data-theme="light"] .tool-description {
   }
   to {
     transform: translate3d(-20px, -12px, 0) scale(1.03);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -315,6 +397,7 @@ body[data-theme="light"] .tool-description {
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(var(--blur-strong));
+  animation: fadeIn 0.4s ease-out;
 }
 
 .sidebar-header {
@@ -475,6 +558,7 @@ body[data-theme="light"] .tool-description {
   );
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: var(--shadow-soft-sm);
+  animation: fadeInUp 0.5s ease-out 0.1s backwards;
 }
 
 .app-header-main {
@@ -495,15 +579,53 @@ body[data-theme="light"] .tool-description {
   color: var(--text-muted);
 }
 
-.crypto-tickers {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.crypto-tickers-marquee {
   flex: 1;
   min-width: 0;
+  overflow: hidden;
   padding: 0 16px;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: auto auto;
+  row-gap: 10px;
+}
+
+.crypto-tickers-row {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.crypto-tickers-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+  will-change: transform;
+  animation: cryptoMarquee var(--marquee-duration, 50s) linear infinite;
+}
+
+.crypto-tickers-track--a {
+  --marquee-duration: 18s;
+}
+
+.crypto-tickers-track--b {
+  --marquee-duration: 22s;
+  animation-delay: -12s;
+  opacity: 0.95;
+}
+
+@keyframes cryptoMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .crypto-ticker {
@@ -512,6 +634,7 @@ body[data-theme="light"] .tool-description {
   align-items: baseline;
   gap: 8px;
   min-width: 0;
+  flex-shrink: 0;
   overflow: hidden;
   padding: 6px 10px;
   border-radius: 10px;
@@ -637,12 +760,18 @@ body[data-theme="light"] .theme-toggle {
   backdrop-filter: blur(var(--blur-strong));
   box-shadow: var(--shadow-soft);
   overflow-y: auto;
+  direction: ltr;
 }
 
 .main-content-inner {
   display: flex;
   flex-direction: column;
   gap: 28px;
+}
+
+.main-content-inner > section {
+  animation: fadeInUp 0.55s ease-out backwards;
+  animation-delay: calc(0.06s * var(--section-i, 0));
 }
 
 .category-section-header {
@@ -673,6 +802,8 @@ body[data-theme="light"] .theme-toggle {
 .tool-item {
   position: relative;
   display: flex;
+  animation: fadeInUp 0.45s ease-out backwards;
+  animation-delay: calc(0.03s * var(--item-i, 0));
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
@@ -855,26 +986,35 @@ a:focus-visible {
     gap: 10px;
   }
 
-  .crypto-tickers {
+  .crypto-tickers-marquee {
     flex: 1 1 100%;
     order: 3;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
     padding: 4px 0 0;
-    min-width: 0;
+    row-gap: 8px;
+  }
+
+  .crypto-tickers-track {
+    gap: 14px;
+  }
+
+  .crypto-tickers-track--a {
+    --marquee-duration: 14s;
+  }
+
+  .crypto-tickers-track--b {
+    --marquee-duration: 17s;
   }
 
   .crypto-ticker {
     min-width: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 6px;
   }
 
   .crypto-ticker-price {
-    margin-left: 0;
-    word-break: break-all;
+    margin-left: auto;
+    word-break: normal;
   }
 
   .menu-icon {
