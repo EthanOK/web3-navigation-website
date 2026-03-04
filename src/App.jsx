@@ -1,12 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { categoriesDatas } from "./categories/categories";
-
-const CRYPTO_IDS = [
-  { id: "bitcoin", symbol: "BTC", name: "Bitcoin" },
-  { id: "ethereum", symbol: "ETH", name: "Ethereum" },
-  { id: "solana", symbol: "SOL", name: "Solana" },
-  { id: "binancecoin", symbol: "BNB", name: "BNB" },
-];
+import { CRYPTO_IDS } from "./constants/crypto";
 
 let cryptoInitialFetchDone = false;
 
@@ -24,6 +18,8 @@ function App() {
   });
   const [tickers, setTickers] = useState([]);
   const mainContentRef = useRef(null);
+  const tickerRowA = tickers.filter((_, idx) => idx % 2 === 0);
+  const tickerRowB = tickers.filter((_, idx) => idx % 2 === 1);
 
   useEffect(() => {
     const fetchPrices = async () => {
@@ -182,22 +178,46 @@ function App() {
               </p>
             </div>
 
-            <div className="crypto-tickers">
-              {tickers.map((t) => (
-                <div key={t.symbol} className="crypto-ticker">
-                  <span className="crypto-ticker-symbol">{t.symbol}</span>
-                  <span className="crypto-ticker-price">
-                    {t.price
-                      ? `$${t.price >= 1 ? t.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : t.price.toFixed(4)}`
-                      : "—"}
-                  </span>
-                  <span
-                    className={`crypto-ticker-change ${t.change >= 0 ? "up" : "down"}`}
-                  >
-                    {t.price ? `${t.change >= 0 ? "+" : ""}${t.change?.toFixed(2)}%` : ""}
-                  </span>
+            <div className="crypto-tickers-marquee">
+              <div className="crypto-tickers-row">
+                <div className="crypto-tickers-track crypto-tickers-track--a">
+                  {[...tickerRowA, ...tickerRowA].map((t, i) => (
+                    <div key={`${t.symbol}-a-${i}`} className="crypto-ticker">
+                      <span className="crypto-ticker-symbol">{t.symbol}</span>
+                      <span className="crypto-ticker-price">
+                        {t.price
+                          ? `$${t.price >= 1 ? t.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : t.price.toFixed(4)}`
+                          : "—"}
+                      </span>
+                      <span
+                        className={`crypto-ticker-change ${t.change >= 0 ? "up" : "down"}`}
+                      >
+                        {t.price ? `${t.change >= 0 ? "+" : ""}${t.change?.toFixed(2)}%` : ""}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="crypto-tickers-row">
+                <div className="crypto-tickers-track crypto-tickers-track--b">
+                  {[...tickerRowB, ...tickerRowB].map((t, i) => (
+                    <div key={`${t.symbol}-b-${i}`} className="crypto-ticker">
+                      <span className="crypto-ticker-symbol">{t.symbol}</span>
+                      <span className="crypto-ticker-price">
+                        {t.price
+                          ? `$${t.price >= 1 ? t.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : t.price.toFixed(4)}`
+                          : "—"}
+                      </span>
+                      <span
+                        className={`crypto-ticker-change ${t.change >= 0 ? "up" : "down"}`}
+                      >
+                        {t.price ? `${t.change >= 0 ? "+" : ""}${t.change?.toFixed(2)}%` : ""}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="app-header-meta">
@@ -225,8 +245,12 @@ function App() {
 
           <main className="main-content" ref={mainContentRef}>
             <div className="main-content-inner">
-              {categories.map((category) => (
-                <section key={category.id} id={category.id}>
+              {categories.map((category, sectionIndex) => (
+                <section
+                  key={category.id}
+                  id={category.id}
+                  style={{ "--section-i": sectionIndex }}
+                >
                   <div className="category-section-header">
                     <h2 className="category-title">{category.title}</h2>
                     <span className="category-count">
@@ -235,8 +259,12 @@ function App() {
                   </div>
 
                   <div className="tool-grid">
-                    {category.tools.map((tool) => (
-                      <article key={tool.name} className="tool-item">
+                    {category.tools.map((tool, toolIndex) => (
+                      <article
+                        key={tool.name}
+                        className="tool-item"
+                        style={{ "--item-i": toolIndex }}
+                      >
                         <a
                           className="tool-link"
                           href={tool.link}
