@@ -13,7 +13,7 @@ const chatgptApps: Category = {
     {
       name: "DeepSeek",
       description: "Chat with DeepSeek AI",
-      icon: "https://chat.deepseek.com/favicon.svg",
+      icon: "/assets/images/deepseek-logo.svg",
       link: "https://chat.deepseek.com"
     },
     {
