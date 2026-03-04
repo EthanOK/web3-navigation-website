@@ -37,7 +37,7 @@ const rpcServices: Category = {
     {
       name: "1RPC",
       description: "1RPC | Web3 Private RPC Relay",
-      icon: "https://www.1rpc.io/favicon.webp",
+      icon: "/assets/images/1rpc-logo.svg",
       link: "https://www.1rpc.io"
     },
     {
