@@ -40,6 +40,12 @@ const developmentTools: Category = {
       description: "Free Online JSON Formatter & Timestamp Converter",
       icon: "https://toolhub.sbs/favicon.ico",
       link: "https://toolhub.sbs/index.html"
+    },
+    {
+      name: "umami",
+      description: "The modern analytics platform for effortless insights",
+      icon: "https://umami.is/favicon.ico",
+      link: "https://umami.is"
     }
   ]
 };

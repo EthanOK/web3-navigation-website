@@ -5,28 +5,22 @@ const ethanWebsites: Category = {
   title: "Ethan's Websites",
   tools: [
     {
-      name: "ChatGPT Web",
-      description: "A cross-platform ChatGPT/Gemini UI",
-      icon: "https://avatars.githubusercontent.com/u/153288546",
-      link: "https://chatgpt-ethan.vercel.app"
-    },
-    {
       name: "Ethan Github",
       description: "Ethan's Github",
       icon: "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png",
       link: "https://github.com/EthanOK"
     },
     {
-      name: "Ethan Homepage",
-      description: "Ethan's Personal Homepage",
-      icon: "https://ethanok.github.io/go.svg",
-      link: "https://ethanok.github.io"
-    },
-    {
       name: "Ethan Tools",
       description: "Ethan's Tools",
       icon: "https://ethan-dapp.vercel.app/favicon.ico",
       link: "https://ethan-dapp.vercel.app"
+    },
+    {
+      name: "web3hub",
+      description: "web3 hub website",
+      icon: "/assets/images/we3hub-logo.svg",
+      link: "https://web3hub.vercel.app"
     },
     {
       name: "Solana Demo",
@@ -41,16 +35,10 @@ const ethanWebsites: Category = {
       link: "https://web3auth-ethereum.vercel.app"
     },
     {
-      name: "web3hub",
-      description: "web3 hub website",
-      icon: "/assets/images/we3hub-logo.svg",
-      link: "https://web3hub.vercel.app"
-    },
-    {
-      name: "umami",
-      description: "The modern analytics platform for effortless insights",
-      icon: "https://web3umami.vercel.app/favicon.ico",
-      link: "https://web3umami.vercel.app"
+      name: "ChatGPT Web",
+      description: "A cross-platform ChatGPT/Gemini UI",
+      icon: "https://avatars.githubusercontent.com/u/153288546",
+      link: "https://chatgpt-ethan.vercel.app"
     }
   ]
 };
