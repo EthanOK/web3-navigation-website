@@ -23,6 +23,13 @@ const developmentTools: Category = {
       link: "https://www.netlify.com"
     },
     {
+      name: "Neon",
+      description:
+        "The database you love, on a serverless platform designed to help you build reliable and scalable applications faster.",
+      icon: "https://neon.com/favicon/favicon.svg",
+      link: "https://neon.com"
+    },
+    {
       name: "Supabase",
       description:
         "Start your project with a Postgres database, instant APIs, Storage",
