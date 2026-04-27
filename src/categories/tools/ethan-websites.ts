@@ -35,10 +35,11 @@ const ethanWebsites: Category = {
       link: "https://web3auth-ethereum.vercel.app"
     },
     {
-      name: "ChatGPT Web",
-      description: "A cross-platform ChatGPT/Gemini UI",
-      icon: "https://avatars.githubusercontent.com/u/153288546",
-      link: "https://chatgpt-ethan.vercel.app"
+      name: "Web3 Umami",
+      description:
+        "The modern analytics platform for effortless insights for web3",
+      icon: "https://web3umami.vercel.app/favicon.ico",
+      link: "https://web3umami.vercel.app"
     }
   ]
 };
