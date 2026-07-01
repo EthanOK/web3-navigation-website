@@ -4,6 +4,14 @@ import { CRYPTO_IDS } from "./constants/crypto";
 
 let cryptoInitialFetchDone = false;
 
+function getToolDisplayUrl(link) {
+  try {
+    return new URL(link).hostname.replace(/^www\./, "");
+  } catch {
+    return link.replace(/^https?:\/\//, "").split("/")[0];
+  }
+}
+
 function App() {
   const [categories] = useState(categoriesDatas);
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
@@ -275,11 +283,17 @@ function App() {
                           rel="noopener noreferrer"
                         >
                           <div className="tool-icon">
-                            {tool.icon && <img src={tool.icon} alt={tool.name} />}
+                            {tool.icon && (
+                              <img
+                                src={tool.icon}
+                                alt={tool.name}
+                                referrerPolicy="no-referrer"
+                              />
+                            )}
                           </div>
                           <div className="tool-meta">
                             <h3 className="tool-title">{tool.name}</h3>
-                            <span className="tool-url">{tool.link.replace(/^https?:\/\//, "")}</span>
+                            <span className="tool-url">{getToolDisplayUrl(tool.link)}</span>
                           </div>
                         </a>
                         {tool.description && (

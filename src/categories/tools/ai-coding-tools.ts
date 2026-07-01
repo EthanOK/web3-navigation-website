@@ -36,6 +36,20 @@ const aiCodingTools: Category = {
       description: "AI-Powered Full-Stack Web Development in the Browser",
       icon: "https://bolt.new/static/favicon.svg",
       link: "https://bolt.new"
+    },
+    {
+      name: "Claude Code",
+      description:
+        "Anthropic's agentic coding tool that reads codebases, edits files, and runs commands in your terminal and IDE",
+      icon: "/assets/images/claude-icon.png",
+      link: "https://claude.com/claude-code"
+    },
+    {
+      name: "Codex",
+      description:
+        "OpenAI's coding agent for building features, fixing bugs, and shipping code across CLI, IDE, and cloud",
+      icon: "https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg",
+      link: "https://openai.com/codex"
     }
   ]
 };

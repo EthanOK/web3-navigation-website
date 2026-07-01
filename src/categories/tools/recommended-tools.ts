@@ -13,7 +13,7 @@ const recommendedTools: Category = {
     {
       name: "Web3auth Session",
       description: "Web3auth Login with Session Id",
-      icon: "/assets/images/web3auth-logo.svg",
+      icon: "/assets/images/web3auth-icon.png",
       link: "https://demo-wallet.web3auth.io"
     },
     {
@@ -43,8 +43,8 @@ const recommendedTools: Category = {
     {
       name: "Chaintool",
       description: "Chaintool - 区块链开发者的工具箱",
-      icon: "https://chaintool.tech/favicon.ico",
-      link: "https://chaintool.tech"
+      icon: "https://learnblockchain.cn/images/favicon-32x32-next.png",
+      link: "https://learnblockchain.cn/tools"
     },
     {
       name: "ABI To Solidity",

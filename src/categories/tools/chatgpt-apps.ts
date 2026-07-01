@@ -32,7 +32,7 @@ const chatgptApps: Category = {
       name: "Claude",
       description:
         "Claude is a next generation AI assistant built by Anthropic",
-      icon: "https://claude.ai/images/claude_app_icon.png",
+      icon: "/assets/images/claude-icon.png",
       link: "https://claude.ai"
     },
     {

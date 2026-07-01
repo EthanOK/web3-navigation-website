@@ -13,7 +13,7 @@ const ethanWebsites: Category = {
     {
       name: "Ethan Tools",
       description: "Ethan's Tools",
-      icon: "https://ethan-dapp.vercel.app/favicon.ico",
+      icon: "https://ethan-dapp.vercel.app/favicon.svg",
       link: "https://ethan-dapp.vercel.app"
     },
     {
@@ -31,14 +31,14 @@ const ethanWebsites: Category = {
     {
       name: "web3auth-ethereum",
       description: "web3auth ethereum website",
-      icon: "/assets/images/web3auth-logo.svg",
+      icon: "/assets/images/web3auth-icon.png",
       link: "https://web3auth-ethereum.vercel.app"
     },
     {
       name: "Web3 Umami",
       description:
         "The modern analytics platform for effortless insights for web3",
-      icon: "https://web3umami.vercel.app/favicon.ico",
+      icon: "/assets/images/umami-logo.svg",
       link: "https://web3umami.vercel.app"
     }
   ]

@@ -6,8 +6,8 @@ const developmentTools: Category = {
     {
       name: "Ctool",
       description: "哈希/加解密/编码转换/JSON/时间戳/正则...",
-      icon: "https://ctool.dev/favicon.ico",
-      link: "https://ctool.dev/tool.html#/tool/json?category=conversion"
+      icon: "https://nidhogg1024.github.io/Ctool/favicon.ico",
+      link: "https://nidhogg1024.github.io/Ctool/tool.html"
     },
     {
       name: "Vercel",
@@ -21,6 +21,13 @@ const developmentTools: Category = {
       description: "Scale & Ship Faster with a Composable Web Architecture",
       icon: "https://www.netlify.com/favicon/icon.svg",
       link: "https://www.netlify.com"
+    },
+    {
+      name: "Render",
+      description:
+        "The cloud for builders — deploy apps, APIs, databases, and cron jobs with zero ops",
+      icon: "https://avatars.githubusercontent.com/u/36424661",
+      link: "https://render.com"
     },
     {
       name: "Neon",
@@ -51,7 +58,7 @@ const developmentTools: Category = {
     {
       name: "umami",
       description: "The modern analytics platform for effortless insights",
-      icon: "https://umami.is/favicon.ico",
+      icon: "/assets/images/umami-logo.svg",
       link: "https://umami.is"
     }
   ]
