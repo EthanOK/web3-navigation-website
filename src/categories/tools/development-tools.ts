@@ -60,6 +60,13 @@ const developmentTools: Category = {
       description: "The modern analytics platform for effortless insights",
       icon: "/assets/images/umami-logo.svg",
       link: "https://umami.is"
+    },
+    {
+      name: "cron-job.org",
+      description:
+        "Free online cron job scheduler — trigger HTTP requests on a schedule",
+      icon: "https://console.cron-job.org/favicon.ico",
+      link: "https://console.cron-job.org"
     }
   ]
 };
