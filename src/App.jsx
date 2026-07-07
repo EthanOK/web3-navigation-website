@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { categoriesDatas } from "./categories/categories";
 import { CRYPTO_IDS } from "./constants/crypto";
+import HeaderLocaleMenu from "./components/HeaderLocaleMenu";
+import { getCategoryTitleKey, useI18n } from "./i18n";
 
 let cryptoInitialFetchDone = false;
 
@@ -13,6 +15,7 @@ function getToolDisplayUrl(link) {
 }
 
 function App() {
+  const { t, tTool } = useI18n();
   const [categories] = useState(categoriesDatas);
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -126,12 +129,20 @@ function App() {
     };
   }, [categories]);
 
+  const toolCount = categories.reduce((acc, c) => acc + c.tools.length, 0);
+
+  const getLocalizedCategoryTitle = (category) => {
+    const key = getCategoryTitleKey(category.id);
+    const translated = t(key);
+    return translated === key ? category.title : translated;
+  };
+
   return (
     <div className="app-root">
       <div className="app-backdrop" />
 
       <div className="app-layout">
-        <button className="menu-icon" onClick={toggleSidebar} aria-label="Toggle navigation">
+        <button className="menu-icon" onClick={toggleSidebar} aria-label={t("nav.toggle")}>
           <span>☰</span>
         </button>
 
@@ -145,16 +156,16 @@ function App() {
 
         <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
           <div className="sidebar-header">
-            <img src="/logo.png" alt="Web3 Atlas" className="brand-logo" />
+            <img src="/logo.png" alt={t("sidebar.titleMain")} className="brand-logo" />
             <div className="sidebar-title">
-              <span className="sidebar-title-main">Web3 Atlas</span>
-              <span className="sidebar-title-sub">导航你的链上工具宇宙</span>
+              <span className="sidebar-title-main">{t("sidebar.titleMain")}</span>
+              <span className="sidebar-title-sub">{t("sidebar.titleSub")}</span>
             </div>
           </div>
 
           <div className="sidebar-divider" />
 
-          <div className="sidebar-caption">Categories</div>
+          <div className="sidebar-caption">{t("sidebar.categories")}</div>
 
           <ul className="category-list">
             {categories.map((category) => (
@@ -166,7 +177,7 @@ function App() {
                   }`}
                   onClick={() => handleCategoryClick(category)}
                 >
-                  {category.title}
+                  {getLocalizedCategoryTitle(category)}
                 </button>
               </li>
             ))}
@@ -174,19 +185,17 @@ function App() {
 
           <div className="sidebar-footer">
             <span className="sidebar-pill">
-              {categories.reduce((acc, c) => acc + c.tools.length, 0)} tools
+              {t("sidebar.toolsPill", { count: String(toolCount) })}
             </span>
-            <span>Curated for builders</span>
+            <span>{t("sidebar.footer")}</span>
           </div>
         </aside>
 
         <div className="content-wrapper">
           <header className="app-header">
             <div className="app-header-main">
-              <h1 className="app-title">Web3 Navigation</h1>
-              <p className="app-subtitle">
-                精选链上工具、社区与服务，一站式快速直达。
-              </p>
+              <h1 className="app-title">{t("app.title")}</h1>
+              <p className="app-subtitle">{t("app.subtitle")}</p>
             </div>
 
             <div className="crypto-tickers-marquee">
@@ -232,11 +241,14 @@ function App() {
             </div>
 
             <div className="app-header-meta">
+              <HeaderLocaleMenu />
               <button
                 type="button"
                 className="theme-toggle"
                 onClick={toggleTheme}
-                aria-label={theme === "dark" ? "切换到浅色模式" : "切换到深色模式"}
+                aria-label={
+                  theme === "dark" ? t("theme.switchToLight") : t("theme.switchToDark")
+                }
               >
                 <span className="theme-toggle-icon" aria-hidden>
                   {theme === "dark" ? (
@@ -263,9 +275,10 @@ function App() {
                   style={{ "--section-i": sectionIndex }}
                 >
                   <div className="category-section-header">
-                    <h2 className="category-title">{category.title}</h2>
+                    <h2 className="category-title">{getLocalizedCategoryTitle(category)}</h2>
                     <span className="category-count">
-                      {category.tools.length} {category.tools.length > 1 ? "links" : "link"}
+                      {category.tools.length}{" "}
+                      {category.tools.length > 1 ? t("links.other") : t("links.one")}
                     </span>
                   </div>
 
@@ -297,7 +310,9 @@ function App() {
                           </div>
                         </a>
                         {tool.description && (
-                          <p className="tool-description">{tool.description}</p>
+                          <p className="tool-description">
+                            {tTool(category.id, tool.name, tool.description)}
+                          </p>
                         )}
                       </article>
                     ))}

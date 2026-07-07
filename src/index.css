@@ -563,7 +563,7 @@ body[data-theme="dark"] .tool-icon img[src*="umami-logo"] {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 14px 60px 14px 18px;
+  padding: 14px 110px 14px 18px;
   border-radius: var(--radius-lg);
   background: linear-gradient(
     135deg,
@@ -687,11 +687,143 @@ body[data-theme="dark"] .tool-icon img[src*="umami-logo"] {
 }
 
 .app-header-meta {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  z-index: 100;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
   justify-content: flex-end;
+}
+
+.app-header-locale-wrap {
+  position: relative;
+  z-index: 1201;
+}
+
+.app-header-locale-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: radial-gradient(
+      circle at 0 0,
+      rgba(124, 231, 255, 0.25),
+      transparent 70%
+    ),
+    rgba(18, 18, 18, 0.95);
+  color: var(--text-primary);
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 0.16s ease-out,
+    color 0.16s ease-out,
+    background 0.16s ease-out;
+}
+
+.app-header-locale-toggle:hover,
+.app-header-locale-toggle.is-open {
+  border-color: rgba(124, 231, 255, 0.65);
+  color: #7ce7ff;
+}
+
+.app-header-locale-toggle:focus {
+  outline: none;
+}
+
+.app-header-locale-toggle:focus-visible {
+  outline: 2px solid rgba(124, 231, 255, 0.65);
+  outline-offset: 1px;
+}
+
+.app-header-locale-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.app-header-locale-icon svg {
+  display: block;
+}
+
+.app-header-locale-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 1200;
+  min-width: 148px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(18, 18, 18, 0.98);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(14px);
+}
+
+.app-header-locale-option {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.app-header-locale-option:hover,
+.app-header-locale-option.is-active {
+  background: rgba(124, 231, 255, 0.12);
+  color: #7ce7ff;
+}
+
+.app-header-locale-option.is-active {
+  font-weight: 600;
+}
+
+body[data-theme="light"] .app-header-locale-toggle {
+  background: radial-gradient(
+      circle at 0 0,
+      rgba(59, 130, 246, 0.35),
+      transparent 70%
+    ),
+    rgba(255, 255, 255, 0.92);
+  color: #0f172a;
+  border-color: rgba(148, 163, 184, 0.7);
+  box-shadow: 0 12px 30px rgba(148, 163, 184, 0.6);
+}
+
+body[data-theme="light"] .app-header-locale-toggle:hover,
+body[data-theme="light"] .app-header-locale-toggle.is-open {
+  border-color: rgba(59, 130, 246, 0.85);
+  color: #2563eb;
+}
+
+body[data-theme="light"] .app-header-locale-menu {
+  border-color: rgba(148, 163, 184, 0.45);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 12px 30px rgba(148, 163, 184, 0.45);
+}
+
+body[data-theme="light"] .app-header-locale-option:hover,
+body[data-theme="light"] .app-header-locale-option.is-active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #2563eb;
 }
 
 .meta-pill {
@@ -710,10 +842,7 @@ body[data-theme="dark"] .tool-icon img[src*="umami-logo"] {
 }
 
 .theme-toggle {
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  z-index: 100;
+  position: static;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1067,12 +1196,15 @@ a:focus-visible {
   }
 
   .app-header-meta {
-    display: block;
-    width: 0;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    gap: 8px;
+    width: auto;
     min-width: 0;
     overflow: visible;
     padding: 0;
-    position: static;
   }
 
   .app-header-meta .meta-pill {
@@ -1083,6 +1215,7 @@ a:focus-visible {
     display: none;
   }
 
+  .app-header-locale-toggle,
   .theme-toggle {
     min-height: 44px;
     touch-action: manipulation;
