@@ -1,0 +1,28 @@
+export const en = {
+  "locale.language": "Language",
+  "locale.english": "English",
+  "locale.simplifiedChinese": "简体中文",
+  "locale.traditionalChinese": "繁體中文",
+  "theme.switchToLight": "Switch to light mode",
+  "theme.switchToDark": "Switch to dark mode",
+  "nav.toggle": "Toggle navigation",
+  "app.title": "Web3 Navigation",
+  "app.subtitle":
+    "Curated onchain tools, communities, and services — all in one place.",
+  "sidebar.titleMain": "Web3 Atlas",
+  "sidebar.titleSub": "Navigate your onchain tool universe",
+  "sidebar.categories": "Categories",
+  "sidebar.toolsPill": "{{count}} tools",
+  "sidebar.footer": "Curated for builders",
+  "links.one": "link",
+  "links.other": "links",
+  "category.recommended-tools": "Recommended Tools",
+  "category.contract-developments": "Contract Develops",
+  "category.blockchain-explorers": "BlockChain Explorers",
+  "category.web3-communities": "Web3 Communities",
+  "category.rpc-services": "Web3 RPC Services",
+  "category.chatgpt-apps": "ChatGPT APPS",
+  "category.ai-coding-tools": "AI Coding Tools",
+  "category.development-tools": "Development Tools",
+  "category.ethan-websites": "Ethan's Websites"
+};
