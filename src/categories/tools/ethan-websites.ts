@@ -11,10 +11,16 @@ const ethanWebsites: Category = {
       link: "https://github.com/EthanOK"
     },
     {
-      name: "Ethan Tools",
-      description: "Ethan's Tools",
+      name: "Ethan DApp",
+      description: "Ethan DApp frontend on Vercel",
       icon: "https://ethan-dapp.vercel.app/favicon.svg",
       link: "https://ethan-dapp.vercel.app"
+    },
+    {
+      name: "Ethan DApp Server",
+      description: "Ethan DApp backend server on Render",
+      icon: "/assets/images/ethan-dapp-server-logo.svg",
+      link: "https://ethan-dapp.onrender.com"
     },
     {
       name: "web3hub",
